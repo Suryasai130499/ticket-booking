@@ -348,12 +348,16 @@ function fillPassengerDetails() {
       `p-radiobutton[formcontrolname='paymentType'][name='paymentType'] input[type='radio']`
     ),
   ];
+
   addDelay(300);
   paymentOptionsRadios
     .filter(
       (r) => r.value === user_data["payment_preferences"].paymentType.toString()
     )[0]
     ?.click();
+
+  addDelay(1000);
+  submitPassengerDetailsForm();
 
   const config = {
     attributes: true,
@@ -372,7 +376,11 @@ function submitPassengerDetailsForm(parentElement) {
   // submit form
   addDelay(800);
   console.log("submitting", Date.now());
-  parentElement.querySelector("button.train_Search.btnDefault").click();
+  document
+    .querySelector(
+      "#psgn-form > form > div > div.col-lg-9.col-md-9.col-sm-12.remove-padding > div.col-xs-12.hidden-xs > div > button.train_Search.btnDefault"
+    )
+    .click();
   statusUpdate("passenger_data_submitted");
 }
 
@@ -381,7 +389,6 @@ function continueScript() {
   const loginBtn = document.querySelector(
     "body > app-root > app-home > div.header-fix > app-header > div.col-sm-12.h_container > div.text-center.h_main_div > div.row.col-sm-12.h_head1 > a.search_btn.loginText.ng-star-inserted"
   );
-  // fill data in respective form at different pages
   if (window.location.href.includes("train-search")) {
     if (loginBtn.innerText.trim().toUpperCase() === "LOGOUT") {
       loadJourneyDetails();
@@ -398,14 +405,6 @@ function continueScript() {
 }
 
 window.onload = function (e) {
-  // wait for time
-  // const timerDiv =
-  //   document.querySelector(
-  //     "body > app-root > app-home > div.header-fix > app-header > div.col-sm-12.h_container > div.text-center.h_main_div > div.row.col-sm-12.h_head1 > span > strong"
-  //   ) ??
-  //   document.querySelector(
-  //     "#slide-menu > p-sidebar > div > nav > div > label"
-  //   );
   const loginBtn = document.querySelector(
     "body > app-root > app-home > div.header-fix > app-header > div.col-sm-12.h_container > div.text-center.h_main_div > div.row.col-sm-12.h_head1 "
   );

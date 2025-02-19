@@ -404,6 +404,7 @@ function setOtherPreferences(e) {
     e.target.type === "checkbox" ? e.target.checked : e.target.value;
 }
 function setPaymentPreferences(e) {
+  console.log(e.target.value);
   if (!finalData["payment_preferences"]) finalData["payment_preferences"] = {};
   finalData["payment_preferences"][e.target.name] =
     e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -480,7 +481,7 @@ function loadUserData() {
     if (loadData.payment_preferences?.paymentType) {
       document.querySelector(
         `#paymentType-${
-          loadData.payment_preferences?.paymentType === "card" ? 1 : 2
+          loadData.payment_preferences?.paymentType === "3" ? 1 : 2
         }`
       ).checked = true;
     }
