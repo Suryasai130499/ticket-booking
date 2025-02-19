@@ -404,7 +404,6 @@ function setOtherPreferences(e) {
     e.target.type === "checkbox" ? e.target.checked : e.target.value;
 }
 function setPaymentPreferences(e) {
-  console.log(e.target.value);
   if (!finalData["payment_preferences"]) finalData["payment_preferences"] = {};
   finalData["payment_preferences"][e.target.name] =
     e.target.type === "checkbox" ? e.target.checked : e.target.value;
